@@ -45,7 +45,7 @@ const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: '0.5rem',
+    borderRadius: 8,
   },
   spacing: 8,
 });

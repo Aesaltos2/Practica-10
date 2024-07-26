@@ -18,20 +18,23 @@ const ProductModal = ({ open, onClose, images, activeStep, setActiveStep }) => {
   return (
     <Dialog
       open={open}
-      onClose={onClose}
-      sx={{ 
-        '& .MuiDialog-paper': { 
-          maxWidth: '90vw',  // Ajusta el ancho máximo
-          maxHeight: '90vh', // Ajusta la altura máxima
+      onClose={onClose} // Cierra el diálogo al hacer clic fuera de él
+      BackdropProps={{
+        onClick: onClose, // Asegura que el clic en el backdrop cierre el modal
+      }}
+      sx={{
+        '& .MuiDialog-paper': {
+          maxWidth: '90vw',
+          maxHeight: '90vh',
           width: 'auto',
           height: 'auto',
           backgroundColor: 'transparent',
-          boxShadow: 'none', // Elimina la sombra
-          overflow: 'hidden', // Asegura que el contenido no desborde
+          boxShadow: 'none',
+          overflow: 'hidden',
         },
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center' 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Box
@@ -57,15 +60,14 @@ const ProductModal = ({ open, onClose, images, activeStep, setActiveStep }) => {
             position: 'relative',
             marginTop: 7,
             marginBottom: 2,
-            
           }}
         >
           <img
             src={images[activeStep]}
             alt={`Slide ${activeStep + 1}`}
-            style={{ width: '110%', height: '110%', objectFit: 'contain' }}
+            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
           />
-          
+
           {/* Controles de Navegación */}
           <Box
             sx={{
@@ -81,17 +83,17 @@ const ProductModal = ({ open, onClose, images, activeStep, setActiveStep }) => {
             <IconButton
               onClick={handlePrevious}
               sx={{
-                color: 'black',
-                backgroundColor: 'white',
+                color: 'common.black',
+                backgroundColor: 'background.paper',
                 borderRadius: '50%',
                 width: 40,
                 height: 40,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+                boxShadow: (theme) => theme.shadows[3],
                 '&:hover': {
-                  backgroundColor: 'lightgray',
+                  backgroundColor: 'action.hover',
                 },
               }}
             >
@@ -112,17 +114,17 @@ const ProductModal = ({ open, onClose, images, activeStep, setActiveStep }) => {
             <IconButton
               onClick={handleNext}
               sx={{
-                color: 'black',
-                backgroundColor: 'white',
+                color: 'common.black',
+                backgroundColor: 'background.paper',
                 borderRadius: '50%',
                 width: 40,
                 height: 40,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+                boxShadow: (theme) => theme.shadows[3],
                 '&:hover': {
-                  backgroundColor: 'lightgray',
+                  backgroundColor: 'action.hover',
                 },
               }}
             >
@@ -153,12 +155,11 @@ const ProductModal = ({ open, onClose, images, activeStep, setActiveStep }) => {
                 src={thumbnail}
                 alt={`Thumbnail ${index + 1}`}
                 style={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: 8,
-                    filter: index === activeStep ? 'opacity(40%)' : 'none',
-                    backgroundColor: index === activeStep ? 'white' : 'none',
-
+                  width: 80,
+                  height: 80,
+                  borderRadius: 8,
+                  filter: index === activeStep ? 'opacity(40%)' : 'none',
+                  backgroundColor: index === activeStep ? 'background.paper' : 'transparent',
                 }}
               />
             </IconButton>
@@ -169,23 +170,24 @@ const ProductModal = ({ open, onClose, images, activeStep, setActiveStep }) => {
         <Box
           sx={{
             position: 'absolute',
-            top: 0,
-            right: 0,
+            top: 16,
+            right: 16,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             width: 40,
             height: 40,
             borderRadius: '50%',
+            backgroundColor: 'background.paper',
             '&:hover': {
-              backgroundColor: 'rgba(0, 0, 0, 0.7)', // Fondo más oscuro al pasar el mouse
+              backgroundColor: 'action.hover',
             },
           }}
         >
           <IconButton
-            onClick={onClose}
+            onClick={onClose} // Cierra el diálogo al hacer clic en el botón
             sx={{
-              color: 'white',
+              color: 'text.primary',
               padding: 0,
             }}
           >

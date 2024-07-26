@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Grid, Paper, Typography, Button, IconButton, capitalize } from '@mui/material';
+import { Box, Grid, Paper, Typography, Button, IconButton } from '@mui/material';
 import ProductCarousel from './ProductCarousel';
 import ProductModal from './ProductModal';
 import { Add, Remove, ShoppingCart } from '@mui/icons-material';
@@ -205,19 +205,16 @@ const ProductDisplay = () => {
                                     borderRadius: '0.5rem',
                                     padding: '0.5rem 1rem',
                                     color: 'white',
-                                    
                                 }}
                                 aria-label="add to cart"
                                 onClick={handleAddToCart}>
-                                <ShoppingCart sx={{ marginRight: 1, color: 'white', fontSize: 16, }} />
-                                <span style={{textTransform : 'capitalize'}} > Add to Cart</span>
+                                <ShoppingCart sx={{ marginRight: 1, color: 'white', fontSize: 16 }} />
+                                Add to Cart
                             </Button>
                         </Box>
                     </Paper>
                 </Grid>
             </Grid>
-
-            {/* Modal de Imagenes */}
             <ProductModal
                 open={isModalOpen}
                 onClose={closeModal}
